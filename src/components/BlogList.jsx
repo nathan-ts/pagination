@@ -46,7 +46,6 @@ function BlogList() {
         {currentPaginationData.map((blog) => (
           <BlogPost
             key={blog.id}
-            id={blog.id}
             author={blog.author}
             title={blog.title}
             excerpt={blog.excerpt}
