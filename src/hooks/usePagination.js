@@ -1,6 +1,10 @@
 export const DOTS = "...";
 
-function usePagination() {
+function usePagination({
+  currentPage,
+  totalCount,
+  pageSize,
+}) {
   /*
     Rewrite the logic here to map out the pagination to be displayed.
     

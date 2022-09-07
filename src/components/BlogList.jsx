@@ -6,34 +6,31 @@ import blogs from "../data/blogs.json";
 const PAGE_SIZES = [15, 25, 50, 100];
 
 function BlogList() {
-  // const currentPaginationData = blogs.posts.slice(0, 15);
-
   // States
   const [currentPaginationData, setCurrentPaginationData] = useState(blogs.posts.slice(0, 15));
   const [currentPageSize, setCurrentPageSize] = useState(PAGE_SIZES[0]);
   const [currentPage, setCurrentPage] = useState(1);
 
+  // Events
   const updateRowsPerPage = (value) => {
     const rows = parseInt(value);
-    console.log(`Calling onPageSizeOptionChange: ${rows}/pg`)
+    console.log(`Calling onPageSizeOptionChange: ${rows}/pg`);
     setCurrentPageSize(rows);
     setCurrentPage(1);
-    // console.log(`Getting posts from ${(currentPage - 1) * rows} to ${currentPage * rows} indices`);
     setCurrentPaginationData(blogs.posts.slice(
       0, rows
     ));
-    // console.log(`Now showing ${currentPaginationData.length} posts`);
   };
   const updatePage = (pageNumber) => {
-    console.log(`Calling onPageChange, page num: ${pageNumber}`)
+    console.log(`Calling onPageChange, page num: ${pageNumber}`);
     setCurrentPage(pageNumber);
     setCurrentPaginationData(blogs.posts.slice(
       (pageNumber - 1) * currentPageSize, 
       pageNumber * currentPageSize
     ));
-    // console.log(`Now showing ${currentPaginationData.length} posts`);
   };
 
+  // JSX
   return (
     <div>
       <Pagination

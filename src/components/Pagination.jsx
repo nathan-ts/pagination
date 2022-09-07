@@ -21,12 +21,27 @@ function Pagination({
     pageSize,
   });
 
+  const firstPage = currentPage > 1;
+  const lastPage = currentPage * pageSize >= totalCount;
+
   const onNext = () => {
-    onPageChange(currentPage + 1);
+    // Only go to next page if not last page
+    if (!lastPage) {
+      onPageChange(currentPage + 1);
+    }
+    else {
+      console.log(`Last page (${currentPage})reached!`);
+    }
   };
 
   const onPrevious = () => {
-    onPageChange(currentPage - 1);
+    // Only go to previous page if not first page
+    if (!firstPage) {
+      onPageChange(currentPage - 1);
+    }
+    else {
+      console.log(`First page reached!`);
+    }
   };
 
   return (
