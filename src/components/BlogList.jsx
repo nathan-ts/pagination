@@ -6,9 +6,6 @@ import blogs from "../data/blogs.json";
 const PAGE_SIZES = [15, 25, 50, 100];
 
 function BlogList() {
-  // Testing
-  blogs.posts = blogs.posts.slice(0,470);
-
   // States
   const [currentPaginationData, setCurrentPaginationData] = useState(blogs.posts.slice(0, 15));
   const [currentPageSize, setCurrentPageSize] = useState(PAGE_SIZES[0]);
@@ -17,7 +14,6 @@ function BlogList() {
   // Events
   const updateRowsPerPage = (value) => {
     const rows = parseInt(value);
-    console.log(`Calling onPageSizeOptionChange: ${rows}/pg`);
     setCurrentPageSize(rows);
     setCurrentPage(1);
     setCurrentPaginationData(blogs.posts.slice(
@@ -25,7 +21,6 @@ function BlogList() {
     ));
   };
   const updatePage = (pageNumber) => {
-    console.log(`Calling onPageChange, page num: ${pageNumber}`);
     setCurrentPage(pageNumber);
     setCurrentPaginationData(blogs.posts.slice(
       (pageNumber - 1) * currentPageSize, 

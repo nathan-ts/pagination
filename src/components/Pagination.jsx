@@ -15,10 +15,10 @@ function Pagination({
   pageSize,
   pageSizeOptions,
 }) {
+  // Set first and last page booleans for ease of calculation
   const firstPage = currentPage <= 1;
   const lastPage = currentPage * pageSize >= totalCount;
 
-  // console.log(`First page is ${firstPage} and last page is ${lastPage}, and current page is ${currentPage}`)
   const paginationRange = usePagination({
     currentPage,
     totalCount,
@@ -30,18 +30,12 @@ function Pagination({
     if (!lastPage) {
       onPageChange(currentPage + 1);
     }
-    else {
-      console.log(`Last page (${currentPage})reached!`);
-    }
   };
 
   const onPrevious = () => {
     // Only go to previous page if not first page
     if (!firstPage) {
       onPageChange(currentPage - 1);
-    }
-    else {
-      console.log(`First page reached!`);
     }
   };
 
@@ -58,7 +52,7 @@ function Pagination({
           // Do not modify the aria-label below, it is used for Hatchways automation.
           aria-label="Goto previous page"
           onClick={onPrevious}
-          disabled={false} // change this line to disable a button.
+          disabled={firstPage} // change this line to disable a button.
         >
           <ChevronLeftIcon />
         </button>
@@ -75,12 +69,12 @@ function Pagination({
           );
         }
 
+        // Set current page for styling
         const inputProps = {'aria-current': currentPage === pageNumber ? 'page' : 'false'};
         return (
           <li
             key={key}
             className="paginationItem"
-            // aria-current="false" // change this line to highlight a current page.
             {...inputProps}
           >
             <button
@@ -102,7 +96,7 @@ function Pagination({
           // Do not modify the aria-label below, it is used for Hatchways automation.
           aria-label="Goto next page"
           onClick={onNext}
-          disabled={false} // change this line to disable a button.
+          disabled={lastPage} // change this line to disable a button.
         >
           <ChevronRightIcon />
         </button>

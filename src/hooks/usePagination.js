@@ -5,9 +5,8 @@ function usePagination({
   totalCount,
   pageSize
 }) {
+  // Calculate total pages
   const totalPages = Math.ceil(totalCount / pageSize);
-  console.log(`There are ${totalPages} pages based on ${totalCount} posts and ${pageSize} page size`);
-  // console.log(`First page is ${firstPage} and last page is ${lastPage}`)
   
   // If pages are <3
   if (totalPages === 1) {
@@ -32,7 +31,6 @@ function usePagination({
   else {
     pagination = [1, DOTS, currentPage - 1, currentPage, currentPage + 1, DOTS, totalPages];
   }
-  // return [1, 2, 3, DOTS, 5];
   return pagination;
 }
 
