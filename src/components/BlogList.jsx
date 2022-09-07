@@ -7,7 +7,7 @@ const PAGE_SIZES = [15, 25, 50, 100];
 
 function BlogList() {
   // Testing
-  // blogs.posts = blogs.posts.slice(0,35);
+  blogs.posts = blogs.posts.slice(0,470);
 
   // States
   const [currentPaginationData, setCurrentPaginationData] = useState(blogs.posts.slice(0, 15));
