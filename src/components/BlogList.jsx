@@ -17,16 +17,20 @@ function BlogList() {
     const rows = parseInt(value);
     console.log(`Calling onPageSizeOptionChange: ${rows}/pg`)
     setCurrentPageSize(rows);
-    console.log(`Getting posts from ${(currentPage - 1) * rows} to ${currentPage * rows} indices`);
+    setCurrentPage(1);
+    // console.log(`Getting posts from ${(currentPage - 1) * rows} to ${currentPage * rows} indices`);
     setCurrentPaginationData(blogs.posts.slice(
-      (currentPage - 1) * rows, 
-      currentPage * rows
+      0, rows
     ));
     // console.log(`Now showing ${currentPaginationData.length} posts`);
   };
   const updatePage = (pageNumber) => {
     console.log(`Calling onPageChange, page num: ${pageNumber}`)
     setCurrentPage(pageNumber);
+    setCurrentPaginationData(blogs.posts.slice(
+      (pageNumber - 1) * currentPageSize, 
+      pageNumber * currentPageSize
+    ));
     // console.log(`Now showing ${currentPaginationData.length} posts`);
   };
 
