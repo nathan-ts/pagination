@@ -22,8 +22,7 @@ function Pagination({
   const paginationRange = usePagination({
     currentPage,
     totalCount,
-    pageSize,
-    lastPage
+    pageSize
   });
 
   const onNext = () => {
