@@ -7,3 +7,7 @@
 ## Responses
 
 1. 
+
+
+
+2. The issue with nanoid is that the keys will be randomly generated. React does not like this, as React expects the key attribute for a component to remain consistent across renders, which aids optimization among other things. The best way to fix this is to use another property or even the array index as a key instead, since that does not change from render to render. 
