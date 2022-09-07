@@ -75,11 +75,13 @@ function Pagination({
           );
         }
 
+        const inputProps = {'aria-current': currentPage === pageNumber ? 'page' : 'false'};
         return (
           <li
             key={key}
             className="paginationItem"
-            aria-current="false" // change this line to highlight a current page.
+            // aria-current="false" // change this line to highlight a current page.
+            {...inputProps}
           >
             <button
               type="button"
