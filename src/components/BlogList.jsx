@@ -9,22 +9,33 @@ function BlogList() {
   // const currentPaginationData = blogs.posts.slice(0, 15);
 
   // States
-  const [currentPosts, setCurrentPosts] = useState(blogs.posts.slice(0, 15));
+  const [currentPaginationData, setCurrentPaginationData] = useState(blogs.posts.slice(0, 15));
   const [currentPageSize, setCurrentPageSize] = useState(PAGE_SIZES[0]);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const updateRowsPerPage = (value) => {
-    setCurrentPageSize(value);
+    const rows = parseInt(value);
+    console.log(`Calling onPageSizeOptionChange: ${rows}/pg`)
+    setCurrentPageSize(rows);
+    console.log(`Getting posts from ${(currentPage - 1) * rows} to ${currentPage * rows} indices`);
+    setCurrentPaginationData(blogs.posts.slice(
+      (currentPage - 1) * rows, 
+      currentPage * rows
+    ));
+    // console.log(`Now showing ${currentPaginationData.length} posts`);
   };
-  const updatePage = () => {
-
+  const updatePage = (pageNumber) => {
+    console.log(`Calling onPageChange, page num: ${pageNumber}`)
+    setCurrentPage(pageNumber);
+    // console.log(`Now showing ${currentPaginationData.length} posts`);
   };
 
   return (
     <div>
       <Pagination
-        currentPage={1}
+        currentPage={currentPage}
         totalCount={blogs.posts.length}
-        pageSize={15}
+        pageSize={currentPageSize}
         pageSizeOptions={PAGE_SIZES}
         onPageChange={updatePage}
         onPageSizeOptionChange={updateRowsPerPage}
@@ -33,9 +44,10 @@ function BlogList() {
         // Do not modify the aria-label below, it is used for Hatchways automation.
         aria-label="blog list"
       >
-        {currentPosts.map((blog) => (
+        {currentPaginationData.map((blog) => (
           <BlogPost
             key={blog.id}
+            id={blog.id}
             author={blog.author}
             title={blog.title}
             excerpt={blog.excerpt}
