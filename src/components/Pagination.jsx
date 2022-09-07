@@ -15,14 +15,16 @@ function Pagination({
   pageSize,
   pageSizeOptions,
 }) {
+  const firstPage = currentPage <= 1;
+  const lastPage = currentPage * pageSize >= totalCount;
+
+  // console.log(`First page is ${firstPage} and last page is ${lastPage}, and current page is ${currentPage}`)
   const paginationRange = usePagination({
     currentPage,
     totalCount,
     pageSize,
+    lastPage
   });
-
-  const firstPage = currentPage > 1;
-  const lastPage = currentPage * pageSize >= totalCount;
 
   const onNext = () => {
     // Only go to next page if not last page

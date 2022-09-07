@@ -6,6 +6,9 @@ import blogs from "../data/blogs.json";
 const PAGE_SIZES = [15, 25, 50, 100];
 
 function BlogList() {
+  // Testing
+  // blogs.posts = blogs.posts.slice(0,35);
+
   // States
   const [currentPaginationData, setCurrentPaginationData] = useState(blogs.posts.slice(0, 15));
   const [currentPageSize, setCurrentPageSize] = useState(PAGE_SIZES[0]);
