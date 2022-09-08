@@ -22,7 +22,7 @@ function Pagination({
   const paginationRange = usePagination({
     currentPage,
     totalCount,
-    pageSize
+    pageSize,
   });
 
   const onNext = () => {
@@ -70,13 +70,11 @@ function Pagination({
         }
 
         // Set current page for styling
-        const inputProps = {'aria-current': currentPage === pageNumber ? 'page' : 'false'};
+        const inputProps = {
+          "aria-current": currentPage === pageNumber ? "page" : "false",
+        };
         return (
-          <li
-            key={key}
-            className="paginationItem"
-            {...inputProps}
-          >
+          <li key={key} className="paginationItem" {...inputProps}>
             <button
               type="button"
               // Do not modify the aria-label below, it is used for Hatchways automation.

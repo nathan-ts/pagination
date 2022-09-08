@@ -36,7 +36,7 @@ Instead of following the steps above, you can also use Docker to set up your env
 
 - System requirements
   - [Docker Compose](https://docs.docker.com/compose/install/)
-- Run `docker-compose up` to run the client. 
+- Run `docker-compose up` to run the client.
 - Enter `Ctrl-C` in the same same terminal or `docker-compose down` in a separate terminal to shut down the server.
 
 # Verify That Everything Is Set Up Correctly

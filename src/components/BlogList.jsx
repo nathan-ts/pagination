@@ -7,7 +7,9 @@ const PAGE_SIZES = [15, 25, 50, 100];
 
 function BlogList() {
   // States
-  const [currentPaginationData, setCurrentPaginationData] = useState(blogs.posts.slice(0, 15));
+  const [currentPaginationData, setCurrentPaginationData] = useState(
+    blogs.posts.slice(0, 15)
+  );
   const [currentPageSize, setCurrentPageSize] = useState(PAGE_SIZES[0]);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -16,16 +18,16 @@ function BlogList() {
     const rows = parseInt(value);
     setCurrentPageSize(rows);
     setCurrentPage(1);
-    setCurrentPaginationData(blogs.posts.slice(
-      0, rows
-    ));
+    setCurrentPaginationData(blogs.posts.slice(0, rows));
   };
   const updatePage = (pageNumber) => {
     setCurrentPage(pageNumber);
-    setCurrentPaginationData(blogs.posts.slice(
-      (pageNumber - 1) * currentPageSize, 
-      pageNumber * currentPageSize
-    ));
+    setCurrentPaginationData(
+      blogs.posts.slice(
+        (pageNumber - 1) * currentPageSize,
+        pageNumber * currentPageSize
+      )
+    );
   };
 
   // JSX
