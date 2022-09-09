@@ -59,11 +59,10 @@ function Pagination({
       </li>
 
       {paginationRange.map((pageNumber) => {
-        const key = nanoid();
 
         if (pageNumber === DOTS) {
           return (
-            <li key={key} className="dots">
+            <li key={pageNumber} className="dots">
               &#8230;
             </li>
           );
@@ -74,7 +73,7 @@ function Pagination({
           "aria-current": currentPage === pageNumber ? "page" : "false",
         };
         return (
-          <li key={key} className="paginationItem" {...inputProps}>
+          <li key={pageNumber} className="paginationItem" {...inputProps}>
             <button
               type="button"
               // Do not modify the aria-label below, it is used for Hatchways automation.
