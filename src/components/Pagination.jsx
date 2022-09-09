@@ -4,8 +4,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/outline";
 import usePagination, { DOTS } from "../hooks/usePagination";
 
 import PropTypes from "prop-types";
-import React from "react";
-import { nanoid } from "nanoid";
+import { useMemo } from "react";
 
 function Pagination({
   onPageChange,
@@ -19,11 +18,13 @@ function Pagination({
   const firstPage = currentPage <= 1;
   const lastPage = currentPage * pageSize >= totalCount;
 
-  const paginationRange = usePagination({
-    currentPage,
-    totalCount,
-    pageSize,
-  });
+  const paginationRange = useMemo(() => 
+    usePagination({
+      currentPage,
+      totalCount,
+      pageSize,
+    })
+  );
 
   const onNext = () => {
     // Only go to next page if not last page

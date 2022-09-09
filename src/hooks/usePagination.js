@@ -37,5 +37,4 @@ function usePagination({ currentPage, totalCount, pageSize }) {
   }
   return pagination;
 }
-
 export default usePagination;
