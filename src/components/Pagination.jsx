@@ -52,14 +52,13 @@ function Pagination({
           // Do not modify the aria-label below, it is used for Hatchways automation.
           aria-label="Goto previous page"
           onClick={onPrevious}
-          disabled={firstPage} // change this line to disable a button.
+          disabled={firstPage}
         >
           <ChevronLeftIcon />
         </button>
       </li>
 
       {paginationRange.map((pageNumber) => {
-
         if (pageNumber === DOTS) {
           return (
             <li key={pageNumber} className="dots">
@@ -93,7 +92,7 @@ function Pagination({
           // Do not modify the aria-label below, it is used for Hatchways automation.
           aria-label="Goto next page"
           onClick={onNext}
-          disabled={lastPage} // change this line to disable a button.
+          disabled={lastPage}
         >
           <ChevronRightIcon />
         </button>

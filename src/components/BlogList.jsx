@@ -28,7 +28,6 @@ function BlogList() {
     );
   };
 
-  // JSX
   return (
     <div>
       <Pagination
