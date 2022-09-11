@@ -18,7 +18,7 @@ function Pagination({
   const firstPage = currentPage <= 1;
   const lastPage = currentPage * pageSize >= totalCount;
 
-  const paginationRange = useMemo(() => 
+  const paginationRange = useMemo(() =>
     usePagination({
       currentPage,
       totalCount,
