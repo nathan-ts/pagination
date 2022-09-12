@@ -22,8 +22,12 @@ function Pagination({
     usePagination({
       currentPage,
       totalCount,
-      pageSize,
-    })
+      pageSize
+    }), [
+      currentPage,
+      totalCount,
+      pageSize
+    ]
   );
 
   const onNext = () => {
